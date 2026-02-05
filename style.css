@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400..700;1,400..700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Arimo", sans-serif;
+}
+
+#navbar {
+    background-color: rgb(143 20 186);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+#icon {
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+#icon img {
+    width: 70px;
+}
+
+#icon h1 {
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 26px;
+}
+#searchBox{
+    position: relative;
+}
+#searchBox #searchFeild{
+    height: 100%;
+    padding: 10px 20px;
+    width: 400px;
+    border-radius: 20px;
+    border: none;
+    outline: none;
+    text-align: left;
+    font-size: 18px;
+}
+#searchBox #searchBtn{
+    position: absolute;
+    right: 0;
+    height: 100%;
+    padding: 10px 20px;
+    border-radius: 20px;
+    border: none;
+    font-size: 16px;
+    background-color: rgb(238, 193, 255);
+    &:hover{
+        background-color: rgb(40, 25, 45);
+        color: rgb(238, 193, 255);
+    }
+}
+#navRight{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-transform: uppercase;
+    font-size: 18px;
+    font-weight: 600;
+    color: rgb(212, 214, 216);
+}
