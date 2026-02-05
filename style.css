@@ -383,8 +383,8 @@ ul li {
         gap: 3px;
     }
     .foodList #foodImage img {
-        width: 50px;
-        height: 50px;
+        width: 70px;
+        height: 70px;
     }
     #foodInfo h2{
         font-size: 12px;
@@ -443,6 +443,9 @@ ul li {
         /* font-size:14px; */
     }
 
+    #SingleFood{
+        overflow-y: scroll;
+    }
     #icon h1 {
         font-size: 18px;
         letter-spacing: 0px;
@@ -450,5 +453,6 @@ ul li {
 
     #foodIngredients ul {
         grid-template-columns: 1fr;
+        gap: 0px;
     }
 }
