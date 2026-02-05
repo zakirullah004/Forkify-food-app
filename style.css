@@ -88,11 +88,8 @@ body {
 
 #mainBody {
     overflow: hidden;
-    flex: 1;
     display: flex;
     justify-content: center;
-    /* display: grid; */
-    /* grid-template-columns: .4fr 1fr; */
 }
 
 #foodMenu {
@@ -156,9 +153,9 @@ body {
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    /* align-items: center; */
     position: relative;
-    padding:10px 20px;
+    padding: 10px 20px;
 }
 
 #SingleFood #image {
@@ -176,41 +173,282 @@ body {
     position: relative;
     top: -50px;
     transform: skew(-20deg);
-    padding: 10px ;
+    padding: 10px;
 }
 
-#SingleFood #foodDetails{
+#SingleFood #foodDetails {
     width: 100%;
     display: flex;
     text-align: center;
     justify-content: space-evenly;
 }
-#SingleFood #foodDetails > div{
+
+#SingleFood #foodDetails>div {
     display: flex;
-    gap: 15px;
+    gap: 35px;
     align-items: center;
 }
 
-#foodIngredients{
+#SingleFood #foodDetails>div i {
+    transition: all 0.4s ease;
+    font-size: 20px;
+}
+
+#SingleFood #foodDetails>div i {
+    color: rgb(143 20 186);
+
+    &:hover {
+        transform: translateY(-2px);
+    }
+}
+
+#foodIngredients {
     margin-top: 20px;
     /* width: 100%; */
 }
-#foodIngredients h2{
+
+#foodIngredients h2 {
     color: rgb(143 20 186);
     text-transform: uppercase;
     letter-spacing: 2px;
-    font-weight:bold;
+    font-weight: bold;
 }
-#foodIngredients ul{
+
+#foodIngredients ul {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     flex-wrap: wrap;
-    list-style-type:square;
+    list-style-type: square;
     gap: 10px;
     column-gap: 2rem;
+    margin-top: 20px;
 
 }
-ul li{
+
+ul li {
     flex: 1;
     flex-basis: 200px;
+}
+
+
+.loader {
+    width: 65px;
+    aspect-ratio: 1;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.loader:before,
+.loader:after {
+    content: "";
+    position: absolute;
+    border-radius: 50px;
+    box-shadow: 0 0 0 3px inset #fff;
+    animation: l4 2.5s infinite;
+}
+
+.loader:after {
+    animation-delay: -1.25s;
+}
+
+@keyframes l4 {
+    0% {
+        inset: 0 35px 35px 0;
+    }
+
+    12.5% {
+        inset: 0 35px 0 0;
+    }
+
+    25% {
+        inset: 35px 35px 0 0;
+    }
+
+    37.5% {
+        inset: 35px 0 0 0;
+    }
+
+    50% {
+        inset: 35px 0 0 35px;
+    }
+
+    62.5% {
+        inset: 0 0 0 35px;
+    }
+
+    75% {
+        inset: 0 0 35px 35px;
+    }
+
+    87.5% {
+        inset: 0 0 35px 0;
+    }
+
+    100% {
+        inset: 0 35px 35px 0;
+    }
+}
+
+.laoderTwo {
+    width: 65px;
+    aspect-ratio: 1;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.laoderTwo:before,
+.laoderTwo:after {
+    content: "";
+    position: absolute;
+    border-radius: 50px;
+    box-shadow: 0 0 0 3px inset #000000;
+    animation: l5 2.5s infinite;
+}
+
+.laoderTwo:after {
+    animation-delay: -1.25s;
+}
+
+@keyframes l5 {
+    0% {
+        inset: 0 35px 35px 0;
+    }
+
+    12.5% {
+        inset: 0 35px 0 0;
+    }
+
+    25% {
+        inset: 35px 35px 0 0;
+    }
+
+    37.5% {
+        inset: 35px 0 0 0;
+    }
+
+    50% {
+        inset: 35px 0 0 35px;
+    }
+
+    62.5% {
+        inset: 0 0 0 35px;
+    }
+
+    75% {
+        inset: 0 0 35px 35px;
+    }
+
+    87.5% {
+        inset: 0 0 35px 0;
+    }
+
+    100% {
+        inset: 0 35px 35px 0;
+    }
+}
+
+@media screen and (max-width:900px) {
+    #navbar {
+        padding: 5px;
+
+    }
+
+    #icon img {
+        width: 50px;
+    }
+
+    #icon h1 {
+        font-size: 22px;
+    }
+
+    #searchBox #searchFeild {
+        padding: 10px 20px;
+        width: 350px;
+        font-size: 16px;
+
+    }
+
+    #navRight {
+        font-size: 14px;
+    }
+
+    #foodIngredients ul {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+      .foodList{
+        gap: 3px;
+    }
+    .foodList #foodImage img {
+        width: 50px;
+        height: 50px;
+    }
+    #foodInfo h2{
+        font-size: 12px;
+    }
+    #foodInfo p{
+        font-size: 10px;
+    }
+}
+
+@media screen and (max-width:768px) {
+    #navRight {
+        display: none;
+    }
+
+    #foodMenu {
+        width: 20%;
+    }
+
+    #SingleFood {
+        width: 80%;
+    }
+
+    #SingleFood #foodTitle {
+        width: fit-content;
+        margin: 0 auto;
+    }
+
+    #SingleFood #foodTitle h1 {
+        font-size: 18px;
+        width: fit-content;
+    }
+
+    #foodIngredients ul {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+    .foodList{
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+}
+
+@media screen and (max-width:576px) {
+    #navbar {
+        justify-content: flex-start;
+        flex-direction: column;
+    }
+
+    #searchBox #searchBtn {
+        text-align: center;
+        font-size: 14px;
+    }
+
+    #searchBox #searchFeild {
+        width: 340px;
+        /* font-size:14px; */
+    }
+
+    #icon h1 {
+        font-size: 18px;
+        letter-spacing: 0px;
+    }
+
+    #foodIngredients ul {
+        grid-template-columns: 1fr;
+    }
 }

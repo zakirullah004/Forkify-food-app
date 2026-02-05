@@ -1,23 +1,13 @@
 let allRecipeis = "https://forkify-api.herokuapp.com/api/v2/recipes?search=pizza"
 let singleRecipe = " https://forkify-api.herokuapp.com/api/v2/recipes/5ed6604591c37cdc054bc886"
 
-htmlfoodList = `<div id="foodList">
-                <div id="foodImage">
-                    <img src="https://png.pngtree.com/png-vector/20240930/ourmid/pngtree-spicy-chicken-biryani-png-image_13985451.png"
-                        alt="foodimage">
-                </div>
-                <div id="foodInfo">
-                    <h2 id="foodTitle">Biryani</h2>
-                    <p style="margin-top: 1px;">matka biryani half kg</p>
-                </div>
-            </div>`;
-
-
 
 async function renderDatatoUi(recipes) {
     // console.log(recipes);
     let foods = recipes.map((recipe) => {
-        return `<div class="foodList" id=${recipe.id} onclick=showSingleItem(this)>
+        return `
+         <div id="myLoader"></div> 
+        <div class="foodList" id=${recipe.id} onclick=showSingleItem(this)>
                 <div id="foodImage">
                     <img src=${recipe.image_url}
                         alt="foodimage">
@@ -28,14 +18,19 @@ async function renderDatatoUi(recipes) {
                 </div>
             </div>`
     })
-    foodMenu.innerHTML = foods.join();
+    foodMenu.innerHTML = foods.join("");
 }
 
-async function getfoodDataApi(recipeName) {
+async function getfoodDataApi(recipeName = "pizza") {
     try {
         const response = await fetch(`https://forkify-api.herokuapp.com/api/v2/recipes?search=${recipeName}`)
         const result = await response.json();
 
+        if (!result) {
+            document.getElementById("myLoader").classList.add("loader")
+        }else{
+            document.getElementById("myLoader").classList.remove("loader")
+        }
         console.log(result);
 
         renderDatatoUi(result.data.recipes)
@@ -59,10 +54,20 @@ searchBtn.addEventListener("click", function () {
 })
 
 async function showSingleItem(item) {
+
+    
+    SingleFood.innerHTML = `<div id="myLoaderBLack"></div> `
+    document.getElementById("myLoaderBLack").classList.add("laoderTwo")
+
     console.log(item.id);
     const response = await fetch(`https://forkify-api.herokuapp.com/api/v2/recipes/${item.id}`);
     const result = await response.json()
     console.log(result);
+
+    if (result){
+        document.getElementById("myLoaderBLack").classList.remove("loaderTwo")
+
+    }
 
     let { data } = result
     let { recipe } = data
@@ -72,10 +77,9 @@ async function showSingleItem(item) {
     let lis = ingredients.map(element => {
         return `<li>${element.description}</li>`
     })
-    // console.log(lis);
-{/* <img src=${result.data.recipe.image_url  */}
-// }>
+
     SingleFood.innerHTML = `
+    <div id="myLoaderBLack"></div> 
     <div id="image" style="background-image:url(${result.data.recipe.image_url})">
         
     </div>
@@ -84,11 +88,11 @@ async function showSingleItem(item) {
             </div>
             <div id="foodDetails">
                 <div>
-                    <p>time : ${result.data.recipe.cooking_time}</p>
-                    <p>servings ${result.data.recipe.servings}</p>
+                    <p><i class="fa-solid fa-clock"></i> : ${result.data.recipe.cooking_time} Minutes</p>
+                    <p><i class="fa-solid fa-user-group"></i> ${result.data.recipe.servings} Servings</p>
                 </div>
                 <div>
-                    <p>add</p>
+                    <p>Save<i class="fa-solid fa-bookmark"></i></p>
                 </div>
             </div>
             <div id="foodIngredients">
@@ -98,3 +102,6 @@ async function showSingleItem(item) {
                 </ul >
             </div > `
 }
+
+
+getfoodDataApi("pizza")
