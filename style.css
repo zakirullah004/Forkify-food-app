@@ -6,8 +6,16 @@
     box-sizing: border-box;
 }
 
+html,
+body {
+    height: 100%;
+    overflow: hidden;
+}
+
 body {
     font-family: "Arimo", sans-serif;
+    display: flex;
+    flex-direction: column;
 }
 
 #navbar {
@@ -34,10 +42,12 @@ body {
     letter-spacing: 2px;
     font-size: 26px;
 }
-#searchBox{
+
+#searchBox {
     position: relative;
 }
-#searchBox #searchFeild{
+
+#searchBox #searchFeild {
     height: 100%;
     padding: 10px 20px;
     width: 400px;
@@ -47,7 +57,8 @@ body {
     text-align: left;
     font-size: 18px;
 }
-#searchBox #searchBtn{
+
+#searchBox #searchBtn {
     position: absolute;
     right: 0;
     height: 100%;
@@ -56,12 +67,14 @@ body {
     border: none;
     font-size: 16px;
     background-color: rgb(238, 193, 255);
-    &:hover{
+
+    &:hover {
         background-color: rgb(40, 25, 45);
         color: rgb(238, 193, 255);
     }
 }
-#navRight{
+
+#navRight {
     display: flex;
     align-items: center;
     gap: 10px;
@@ -69,4 +82,135 @@ body {
     font-size: 18px;
     font-weight: 600;
     color: rgb(212, 214, 216);
+}
+
+
+
+#mainBody {
+    overflow: hidden;
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    /* display: grid; */
+    /* grid-template-columns: .4fr 1fr; */
+}
+
+#foodMenu {
+    width: 30%;
+    background-color: rgb(238, 193, 255);
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.foodList {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 20px;
+    border-bottom: 2px solid white !important;
+    padding: 10px;
+}
+
+.foodList #foodImage img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+#foodInfo h2 {
+    text-transform: uppercase;
+    font-weight: 600;
+    color: rgb(143 20 186);
+    font-size: 18px;
+}
+
+#foodInfo p {
+    letter-spacing: 1px;
+}
+
+#foodMenu::-webkit-scrollbar {
+    width: 10px;
+}
+
+#foodMenu::-webkit-scrollbar-track {
+    background: rgb(238, 193, 255);
+}
+
+#foodMenu::-webkit-scrollbar-thumb {
+    background: rgb(143 20 186);
+    border-radius: 10px;
+    height: 100px;
+}
+
+#foodMenu::-webkit-scrollbar-thumb:hover {
+    background: rgb(90, 10, 120);
+}
+
+
+
+#SingleFood {
+    width: 70%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    padding:10px 20px;
+}
+
+#SingleFood #image {
+    background-color: yellow;
+    width: 100%;
+    height: 400px;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+
+#SingleFood #foodTitle {
+    background-color: rgb(143 20 186);
+    position: relative;
+    top: -50px;
+    transform: skew(-20deg);
+    padding: 10px ;
+}
+
+#SingleFood #foodDetails{
+    width: 100%;
+    display: flex;
+    text-align: center;
+    justify-content: space-evenly;
+}
+#SingleFood #foodDetails > div{
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+#foodIngredients{
+    margin-top: 20px;
+    /* width: 100%; */
+}
+#foodIngredients h2{
+    color: rgb(143 20 186);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight:bold;
+}
+#foodIngredients ul{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    flex-wrap: wrap;
+    list-style-type:square;
+    gap: 10px;
+    column-gap: 2rem;
+
+}
+ul li{
+    flex: 1;
+    flex-basis: 200px;
 }
